@@ -17,7 +17,6 @@ import include.callbacks as callbacks
 import include.generators as generators
 import include.loss as loss
 import include.optimisers as optimisers
-import models.seg as sm
 from Data import Data_train
 from saver import Saver
 from wandb.integration.keras import WandbMetricsLogger, WandbModelCheckpoint
@@ -82,20 +81,6 @@ class Model_training_manager:
 
         self.data = instantiate(cfg.data.init)
 
-        if cfg.model.type == "segmentation":
-            self.data.prepare_input(
-                cfg.data.input.chan_0,
-                cfg.data.input.chan_1,
-                cfg.data.input.chan_2,
-                cfg.data.input.chan_3,
-                cfg.data.input.chan_4,
-            )
-            self.data.prepare_output_segmentation(
-                cfg.data.output.curve,
-                cfg.data.output.min_w,
-                cfg.data.output.max_w,
-                cfg.data.output.param_curve,
-            )
         if cfg.model.type == "embedding":
             self.data.prepare_input(
                 cfg.data.input.chan_0,
@@ -105,7 +90,7 @@ class Model_training_manager:
                 cfg.data.input.chan_4,
             )
             self.data.prepare_output_embedding()
-        if cfg.model.type in ("inversion"):
+        elif cfg.model.type in ("inversion"):
             self.data.prepare_input(
                 cfg.data.input.chan_0,
                 cfg.data.input.chan_1,
@@ -118,32 +103,7 @@ class Model_training_manager:
 
     def build_model(self, cfg: DictConfig) -> None:
         """Build the inversion or segmentation model."""
-        # Detect TPU, return appropriate distribution strategy
-        # try:
-        #     tpu = tf.distribute.cluster_resolver.TPUClusterResolver()
-        #     print('Running on TPU ', tpu.master())
-        # except ValueError:
-        #     tpu = None
-
-        # if tpu:
-        #     tf.config.experimental_connect_to_cluster(tpu)
-        #     tf.tpu.experimental.initialize_tpu_system(tpu)
-        #     strategy = tf.distribute.experimental.TPUStrategy(tpu)
-        # else:
-        #     strategy = tf.distribute.get_strategy()
-
-        # with strategy.scope():
-        if cfg.model.type.startswith("segmentation"):
-            seg_builder = sm.Seg_model_builder(
-                cfg.model.name,
-                self.data.x.fields_input_shape,
-                self.data.y.classes,
-                self.data.x.n_layer,
-                self.data.x.xco2_noisy_chans,
-                cfg.model.dropout_rate,
-            )
-            self.model = seg_builder.get_model()
-        elif cfg.model.type == "embedding":
+        if cfg.model.type == "embedding":
             reg_builder = rm.Reg_model_builder(
                 name=cfg.model.name,
                 input_shape=self.data.x.fields_input_shape,
@@ -188,19 +148,6 @@ class Model_training_manager:
 
     def prepare_training(self, cfg: DictConfig) -> None:
         """Prepare the training phase."""
-        if cfg.model.type.startswith("segmentation"):
-            gen_machine = generators.Generator(
-                cfg.model.type,
-                cfg.training.batch_size,
-                cfg.augmentations.rot.range,
-                cfg.augmentations.shift.range,
-                cfg.augmentations.flip.bool,
-                cfg.augmentations.shear.range,
-                cfg.augmentations.zoom.range,
-                cfg.augmentations.shuffle,
-            )
-            generator = gen_machine.flow(
-                self.data.x.train_data[self.data.x.train_data_indexes], self.data.y.train)
         if cfg.model.type == "embedding":
             gen_machine = generators.Generator(
                 cfg.model.type,

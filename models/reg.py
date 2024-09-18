@@ -14,12 +14,6 @@ import keras
 import numpy as np
 import tensorflow as tf
 
-from models.my_efficientnet import EfficientNet
-from models.my_essential_inversors import (essential_regressor,
-                                           essential_regressor_2,
-                                           essential_regressor_3,
-                                           linear_regressor)
-from models.my_mobilenet import MobileNet
 from models.my_shufflenet import ShuffleNet
 from models.my_squeezenet import SqueezeNet
 from models.cnn_lstm import cnn_lstm
@@ -136,25 +130,8 @@ def get_core_model(
         top_layers=None,
         config=None):
     """Get core model for regression model."""
-    if name == "efficientnet":
-        core_model = EfficientNet(
-            scaling_coefficient=0.5,
-            input_shape=input_shape,
-            classes=classes,
-            dropout_rate=dropout_rate,
-        )
-    elif name == "linear":
-        core_model = linear_regressor(input_shape)
-    elif name == "essential":
-        core_model = essential_regressor(input_shape)
-    elif name == "essential_2":
-        core_model = essential_regressor_2(input_shape)
-    elif name == "essential_3":
-        core_model = essential_regressor_3(input_shape)
-    elif name == "squeezenet":
+    if name == "squeezenet":
         core_model = SqueezeNet(input_shape, dropout_rate, compression=0.4)
-    elif name == "mobilenet":
-        core_model = MobileNet(input_shape, scaling_coeff=0.4)
     elif name == "shufflenet":
         core_model = ShuffleNet(input_shape, scaling_coefficient=0.75)
     elif name == "co2emiss-cnnlstm":
