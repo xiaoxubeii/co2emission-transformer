@@ -1,0 +1,40 @@
+# @package _global_
+
+defaults:
+    - override /model: xco2_autoencoder
+    - override /data/output: embedding
+
+data:
+    path:
+        train:
+            name: all_hotspots_but_box
+        valid:
+            name: all_hotspots_but_box
+    input:
+        chan_1: v_wind
+        chan_2: u_wind
+        chan_3: None
+        chan_4: None
+callbacks:
+    model_checkpoint: true
+    early_stopping: true
+training:
+    max_epochs: 1
+    batch_size: 32
+
+sweep: true
+wandb:
+    project_name: co2-emission-estimation
+    key: 69fea85817147f437d88815d733f3e2ed9799c12
+# augmentations:
+#     shuffle: False
+#     rot:
+#         range: 0
+#     shift:
+#         range: 0
+#     flip:
+#         bool: False
+#     shear:
+#         range: 0
+#     zoom:
+#         range: 0.2

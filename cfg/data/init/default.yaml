@@ -1,0 +1,8 @@
+_target_: Data.Data_train
+path_train_ds: ${data.path.train}
+path_valid_ds: ${data.path.valid}
+path_test_ds: ${data.path.test}
+path_data_dir: ${data.path.directory}
+window_length: 0
+shift: 0
+cutoff_size: 0

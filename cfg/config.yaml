@@ -1,0 +1,22 @@
+defaults:
+    - data: default
+    - _self_
+    - model: inversion
+    - training: default
+    - augmentations: default
+    - callbacks:
+          - model_checkpoint
+          - learning_rate_monitor
+          - early_stopping
+          - wandb
+    - hydra: default
+dir_res: res/${model.type}
+exp_name: ${model.name}-${now:%m%d%H%M}
+seed: 42
+sweep: false
+load_weights:
+load_model:
+run_eagerly: false
+wandb:
+    project_name: co2-emission-estimation
+    key: 69fea85817147f437d88815d733f3e2ed9799c12

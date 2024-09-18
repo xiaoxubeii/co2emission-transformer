@@ -1,0 +1,4 @@
+type: inversion
+name: co2emiss
+custom_model: false
+leverage_loss_metric: true

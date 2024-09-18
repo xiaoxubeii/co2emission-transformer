@@ -1,0 +1,15 @@
+# @package _global_
+
+defaults:
+  - override /model: xco2embedd_mae
+  - override /data/output: embedding
+  - override /data/input: embedding
+  - override /data/path: small
+
+callbacks:
+  model_checkpoint:
+    monitor: loss
+  early_stopping:
+    monitor: loss
+  learning_rate_monitor:
+    monitor: loss

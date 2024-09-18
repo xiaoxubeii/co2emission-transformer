@@ -1,0 +1,29 @@
+# @package _global_
+
+defaults:
+    - override /model: co2emiss_cnnlstm
+    - override /data/output: inversion
+    - override /data/input: inversion
+
+data:
+    init:
+        window_length: 12
+        shift: 1
+    path:
+        test:
+            - name: boxberg
+              nc: test_dataset.nc
+    input:
+        chan_0: xco2
+        chan_1: v_wind
+        chan_2: u_wind
+        chan_3: None
+        chan_4: None
+wandb:
+    project_name: co2-emission-estimation
+    key: 69fea85817147f437d88815d733f3e2ed9799c12
+model:
+    name: co2et-win12-patch16
+    path: /Users/xiaoxubeii/Program/go/src/github.com/co2-images-inv-dl/experiments/inversion/${model.name}
+    patch_size: 16
+exp_name: test-${model.name}

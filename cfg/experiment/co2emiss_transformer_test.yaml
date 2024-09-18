@@ -1,0 +1,18 @@
+# @package _global_
+
+defaults:
+  - override /model: co2emiss_transformer
+  - override /data/output: inversion
+  - override /data/input: inversion
+  - override /data/path: boxberg
+
+data:
+  init:
+    cutoff_size: 100
+    shift: 1
+    window_length: 2
+
+model:
+  embedd_quanti_path: /Users/xiaoxubeii/Program/go/src/github.com/co2-images-inv-dl/experiments/inversion/co2emiss-regres-patch16-epoch80/w_best.keras
+
+run_eagerly: True

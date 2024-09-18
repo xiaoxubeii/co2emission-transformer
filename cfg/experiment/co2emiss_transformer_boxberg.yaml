@@ -1,0 +1,7 @@
+# @package _global_
+
+defaults:
+  - override /model: co2emiss_transformer
+  - override /data/output: inversion
+  - override /data/input: inversion
+  - override /data/path: boxberg

@@ -1,0 +1,17 @@
+# @package _global_
+
+defaults:
+  - override /model: co2emiss_regres
+  - override /data/output: inversion
+  - override /data/input: inversion
+  - override /data/path: boxberg
+
+data:
+  init:
+    cutoff_size: 64
+training:
+  max_epochs: 1
+working_dir: /kaggle/working
+model:
+  embedding_path: /Users/xiaoxubeii/Program/go/src/github.com/co2-images-inv-dl/experiments/embedding/xco2embedd-mae-patch16/w_best.keras
+  patch_size: 16

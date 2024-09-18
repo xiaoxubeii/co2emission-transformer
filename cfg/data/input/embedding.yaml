@@ -1,0 +1,6 @@
+chan_0: xco2
+chan_1: u_wind
+chan_2: v_wind
+chan_3: None
+chan_4: None
+dir_seg_models: /cerea_raid/users/dumontj/dev/coco2/dl/res/models

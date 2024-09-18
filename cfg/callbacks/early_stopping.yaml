@@ -1,0 +1,7 @@
+early_stopping:
+    min_delta: 1E-5
+    patience: 20
+    monitor: val_loss
+    verbose: 0
+    mode: "min"
+    restore_best_weights: True

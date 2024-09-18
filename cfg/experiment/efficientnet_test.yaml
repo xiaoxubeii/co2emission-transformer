@@ -1,0 +1,16 @@
+# @package _global_
+
+defaults:
+  - override /model: efficientnet
+  - override /data/output: inversion
+  - override /data/input: inversion
+  - override /data/path: boxberg
+
+data:
+  init:
+    cutoff_size: 100
+
+training:
+  max_epochs: 1
+
+load_weights: /Users/xiaoxubeii/Program/go/src/github.com/co2-images-inv-dl/res/inversion/efficientnet-08072026/w_last.weights.h51

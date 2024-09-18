@@ -1,0 +1,34 @@
+# @package _global_
+
+defaults:
+    - override /model: inversion
+
+data:
+    init:
+        cutoff_size: 100
+        # window_length: 3
+        # shift: 1
+    path:
+        train:
+            name: all_hotspots_but_lip
+        valid:
+            name: all_hotspots_but_lip
+    input:
+        # chan_1: xco2_prec
+        # chan_2: no2
+        # chan_3: v_wind
+        # chan_4: u_wind
+        # chan_5: weighted_plume
+        chan_1: v_wind
+        chan_2: u_wind
+callbacks:
+    model_checkpoint: false
+model:
+    name: efficientnet
+training:
+    max_epochs: 1
+
+sweep: true
+wandb:
+    project_name: co2-emission-estimation
+    key: 69fea85817147f437d88815d733f3e2ed9799c12

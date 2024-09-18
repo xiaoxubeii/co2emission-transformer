@@ -1,0 +1,11 @@
+# @package _global_
+
+defaults:
+  - override /model: co2emiss_ensembling
+  - override /data/output: inversion
+  - override /data/input: inversion
+  - override /data/path: sch1
+
+model:
+  predictor_path:
+  quantifier_path:

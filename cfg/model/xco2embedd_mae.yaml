@@ -1,0 +1,9 @@
+type: embedding
+name: xco2embedd-mae
+loss_func: MeanSquaredError
+dropout_rate: 0.2
+scaling_coefficient: 1
+patch_size: 16
+image_size: 64
+custom_model: true
+leverage_loss_metric: false

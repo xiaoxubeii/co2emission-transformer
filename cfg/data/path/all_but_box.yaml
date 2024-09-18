@@ -1,0 +1,9 @@
+train:
+  - name: all_hotspots_but_box
+    nc: train_dataset.nc
+valid:
+  - name: all_hotspots_but_box
+    nc: valid_dataset.nc
+test:
+  - name: all_hotspots_but_box
+    nc: test_dataset.nc

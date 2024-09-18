@@ -1,0 +1,14 @@
+# @package _global_
+
+defaults:
+  - override /model: squeezenet
+  - override /data/output: inversion
+  - override /data/input: inversion
+  - override /data/path: boxberg
+
+data:
+  init:
+    cutoff_size: 100
+
+training:
+  max_epochs: 1

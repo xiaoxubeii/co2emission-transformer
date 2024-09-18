@@ -1,0 +1,5 @@
+model_checkpoint:
+    monitor: val_loss
+    filepath: "w_best.keras"
+    mode: "min"
+    save_best_only: True

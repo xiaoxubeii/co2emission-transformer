@@ -1,0 +1,11 @@
+# @package _global_
+
+defaults:
+  - override /model: co2emiss_regres
+  - override /data/output: inversion
+  - override /data/input: inversion
+  - override /data/path: sch2
+
+callbacks:
+  early_stopping:
+    patience: 50

@@ -1,0 +1,7 @@
+type: inversion
+name: squeezenet
+loss_func: MeanAbsoluteError
+dropout_rate: 0.2
+scaling_coefficient: 1
+custom_model: false
+leverage_loss_metric: true

@@ -1,0 +1,9 @@
+type: inversion
+name: co2emiss-transformer
+loss_func: MeanSquaredError
+dropout_rate: 0.2
+scaling_coefficient: 1
+patch_size: 8
+image_size: 64
+custom_model: true
+leverage_loss_metric: false

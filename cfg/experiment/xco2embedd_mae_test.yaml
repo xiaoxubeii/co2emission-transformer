@@ -1,0 +1,17 @@
+# @package _global_
+
+defaults:
+  - override /model: xco2embedd_mae
+  - override /data/output: embedding
+  - override /data/input: embedding
+  - override /data/path: boxberg
+
+callbacks:
+  model_checkpoint:
+    monitor: loss
+  early_stopping:
+    monitor: loss
+  learning_rate_monitor:
+    monitor: loss
+
+load_weights: /Users/xiaoxubeii/Program/go/src/github.com/co2-images-inv-dl/experiments/embedding/xco2embedd-mae-patch16/w_best.keras

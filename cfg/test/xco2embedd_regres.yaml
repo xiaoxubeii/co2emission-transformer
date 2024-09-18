@@ -1,0 +1,12 @@
+# @package _global_
+
+defaults:
+    - override /model: co2emiss_regres
+    - override /data/output: inversion
+    - override /data/input: inversion
+    - override /data/path: sch2
+
+model:
+    embedd_path:
+    regres_path:
+    name: xco2embedd-regres

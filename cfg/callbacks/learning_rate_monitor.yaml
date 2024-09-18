@@ -1,0 +1,8 @@
+learning_rate_monitor:
+    factor: 0.8
+    patience: 10
+    min_delta: 5E-3
+    min_lr: 5E-5
+    cooldown: 0
+    monitor: val_loss
+    verbose: 0
