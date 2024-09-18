@@ -75,6 +75,12 @@ tasks=[train_xco2embedd_patch16_chan5, co2emiss_transf]
 run_pipeline(pipeline_funcs, tasks)
 ```
 
+For additional examples and a more detailed walkthrough of the CO2 Emission Transformer, you can refer to our Kaggle notebook:
+
+[CO2 Emission Transformer Examples](https://www.kaggle.com/code/xiaoxubeii/co2emission-transformer)
+
+This notebook provides a comprehensive guide on how to use the transformer model, including data preparation, model training, and result visualization. It's an excellent resource for both beginners and advanced users looking to understand the intricacies of our CO2 emission prediction system.
+
 3. Analyze the results using the provided visualization tools.
 
 ## Results
